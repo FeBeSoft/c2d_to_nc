@@ -9,6 +9,17 @@ Pensée pour le fablab et la classe : un coup d'œil suffit pour voir si le proj
 (brut, dessin, parcours, outils, attaches), et le G-code produit s'envoie avec n'importe quel
 logiciel de pilotage Grbl (Candle, Universal G-Code Sender, LaserGRBL, Carbide Motion…).
 
+<table>
+  <tr>
+    <td><img src="assets/screenshots/sombre.png" alt="c2d_to_nc, thème sombre" width="380"></td>
+    <td><img src="assets/screenshots/clair.png" alt="c2d_to_nc, thème clair" width="380"></td>
+  </tr>
+  <tr>
+    <td align="center">Thème sombre</td>
+    <td align="center">Thème clair</td>
+  </tr>
+</table>
+
 > **Outil indépendant, non affilié à Carbide 3D LLC.** Carbide Create, Carbide Motion et
 > Shapeoko sont des marques de Carbide 3D LLC. c2d_to_nc lit le format des fichiers de projet
 > à des fins d'interopérabilité ; il n'utilise aucun code ni aucune ressource de Carbide 3D.
