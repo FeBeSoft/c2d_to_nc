@@ -1,0 +1,18 @@
+/target/
+**/*.rs.bk
+*.pdb
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# atelier graphique (originaux HD, essais) : les visuels publiés sont dans assets/
+/_icon/
+
+# essais locaux (projets de test, G-code produit)
+/_essais/
+
+# journaux de build locaux et fichiers Windows
+*.log
+desktop.ini
+Thumbs.db

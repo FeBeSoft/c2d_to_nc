@@ -1,0 +1,17 @@
+[package]
+name = "makercraft-c2d"
+description = "MakerCraft : lecture des projets Carbide Create (.c2d) — formes, calques, outils, parcours"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+makercraft-geom.workspace = true
+thiserror.workspace = true
+serde_json.workspace = true
+rusqlite.workspace = true
+flate2.workspace = true
+
+[lints]
+workspace = true

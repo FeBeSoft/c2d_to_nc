@@ -1,0 +1,16 @@
+[package]
+name = "makercraft-cam"
+description = "MakerCraft : FAO 2.5D (découpe, poche, perçage, gravure) et G-code Grbl"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+makercraft-geom.workspace = true
+makercraft-c2d.workspace = true
+makercraft-ext-api.workspace = true
+geo.workspace = true
+
+[lints]
+workspace = true

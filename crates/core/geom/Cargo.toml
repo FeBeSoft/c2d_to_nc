@@ -1,0 +1,10 @@
+[package]
+name = "makercraft-geom"
+description = "MakerCraft : géométrie de base 2D/3D (L0, aucune dépendance)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true

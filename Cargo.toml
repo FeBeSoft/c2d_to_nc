@@ -1,0 +1,51 @@
+[workspace]
+resolver = "3"
+members = ["crates/core/*", "crates/ext/*", "apps/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+rust-version = "1.95"
+authors = ["c2d_to_nc contributors"]
+
+[workspace.dependencies]
+# --- briques internes (issues du projet MakerCraft) ---
+makercraft-geom = { path = "crates/core/geom" }
+makercraft-ext-api = { path = "crates/core/ext-api" }
+makercraft-c2d = { path = "crates/ext/c2d" }
+makercraft-cam = { path = "crates/ext/cam" }
+
+# --- fondations ---
+thiserror = "2"
+serde_json = "1"
+# icône et version dans le .exe Windows (build.rs de l'application)
+winresource = "0.1"
+# lecture des projets .c2d (SQLite + JSON compressé zlib)
+rusqlite = { version = "0.37", features = ["bundled"] }
+flate2 = "1"
+# géométrie 2D pour la FAO : décalages d'outil (buffer) et booléens, Rust pur (MIT/Apache)
+geo = "0.33"
+# interface graphique
+eframe = "0.36"
+rfd = "0.17"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+unwrap_used = "warn"
+expect_used = "warn"
+
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 16
