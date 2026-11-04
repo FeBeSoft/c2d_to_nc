@@ -8,6 +8,11 @@
 
 # atelier graphique (originaux HD, essais) : les visuels publiés sont dans assets/
 /_icon/
+/_icons/
+/_images/
+
+# archives de distribution (déposées dans les Releases GitHub, pas dans le dépôt)
+/dist/
 
 # essais locaux (projets de test, G-code produit)
 /_essais/
