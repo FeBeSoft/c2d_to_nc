@@ -55,6 +55,10 @@ trajectoires lui-même.
 | Attaches (tabs) | non reproduites : un avertissement invite à brider les pièces |
 | Autres types | ignorés, avec un avertissement |
 
+<img src="assets/screenshots/parcours.png" alt="Parcours recalculés par c2d_to_nc (aperçu SVG)" width="760">
+
+<sub>Aperçu SVG des parcours recalculés pour le projet d'exemple (option « Aperçu SVG »).</sub>
+
 **Vérifier le G-code dans un simulateur (Candle, NC Viewer…) avant d'usiner.**
 
 ## Compilation
