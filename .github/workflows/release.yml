@@ -1,0 +1,67 @@
+# À chaque étiquette de version (v0.2.0, v1.0.0…) : compile l'exe Windows, prépare le zip
+# et crée la Release en BROUILLON, à relire et publier à la main sur GitHub.
+#   git tag -a v0.2.0 -m "c2d_to_nc 0.2.0"
+#   git push origin v0.2.0
+# Le zip contient c2d_to_nc.exe, LICENSE, README.md et, s'il existe, le contenu de examples/.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  windows:
+    name: Exe Windows et zip
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Tests
+        run: cargo test --workspace
+
+      - name: Compilation release
+        run: cargo build --release
+
+      - name: Préparation du zip
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
+          if (-not $version -or $version -eq 'main') { $version = 'dev' }
+          $name = "c2d_to_nc-$version-windows-x64"
+          $dir = "dist\$name"
+          New-Item -ItemType Directory -Force $dir | Out-Null
+          Copy-Item target\release\c2d_to_nc.exe, LICENSE, README.md $dir
+          if (Test-Path examples) { Copy-Item examples\* $dir -Recurse }
+          Compress-Archive -Path "$dir\*" -DestinationPath "dist\$name.zip"
+          $hash = (Get-FileHash "dist\$name.zip" -Algorithm SHA256).Hash.ToLower()
+          "ZIP=dist\$name.zip" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "Zip : $name.zip  sha256:$hash" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+
+      - name: Release en brouillon
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          prerelease: ${{ startsWith(github.ref_name, 'v0.') }}
+          name: c2d_to_nc ${{ github.ref_name }}
+          files: ${{ env.ZIP }}
+
+      - name: Zip en artefact (lancement manuel)
+        if: "!startsWith(github.ref, 'refs/tags/v')"
+        uses: actions/upload-artifact@v4
+        with:
+          name: c2d_to_nc-windows-x64
+          path: ${{ env.ZIP }}

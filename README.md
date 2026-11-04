@@ -2,6 +2,8 @@
 
 <img src="assets/c2d_to_nc-256.png" alt="Icône de c2d_to_nc" width="128" align="right">
 
+[![CI](https://github.com/FeBeSoft/c2d_to_nc/actions/workflows/ci.yml/badge.svg)](https://github.com/FeBeSoft/c2d_to_nc/actions/workflows/ci.yml)
+
 Petite application de bureau : on glisse un projet Carbide Create (`.c2d`) dans la fenêtre,
 elle vérifie son contenu et écrit le G-code Grbl (`.nc`) dans le même dossier que le projet.
 
