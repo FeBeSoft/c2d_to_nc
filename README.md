@@ -89,6 +89,15 @@ assets/           icône de l'application
 Les crates `makercraft-*` viennent du projet MakerCraft, dont c2d_to_nc est une application
 autonome.
 
+## Remerciements / Credits
+
+Merci à tous ceux dont le travail a rendu c2d_to_nc possible / Thanks to everyone whose work made c2d_to_nc possible:
+
+- Carbide 3D, pour Carbide Create et le format .c2d
+- [Grbl](https://github.com/gnea/grbl)
+- Emil Ernerfeldt et les contributeurs d'[egui / eframe](https://github.com/emilk/egui)
+- l'équipe de Rust
+
 ## Licence
 
 GPL-3.0-or-later (voir [`LICENSE`](LICENSE)).
